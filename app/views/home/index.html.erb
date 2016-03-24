@@ -1,0 +1,56 @@
+<h1>The Borough of Franklin</h1>
+
+<table>
+  <tr>
+    <td>
+      <%= @map.locations.where(x_coord: { @user.x_pos }, y_coord: { @user.y_pos }).first.location_name %>
+      <br />
+      Move Northwest
+    </td>
+    <td>
+      <%= @map.locations.where(x_coord: { @user.x_pos }, y_coord: { @user.y_pos }).first.location_name %>
+      <br />
+      Move North
+    </td>
+    <td>
+      <%= @map.locations.where(x_coord: { @user.x_pos }, y_coord: { @user.y_pos }).first.location_name %>
+      <br />
+      Move Northeast
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <%= @map.locations.where(x_coord: { @user.x_pos }, y_coord: { @user.y_pos }).first.location_name %>
+      <br />
+      Move West
+    </td>
+    <td>
+      Player at <%= @map.locations.where(x_coord: @user.x_pos, y_coord: @user.y_pos).first.location_name %>
+    </td>
+    <td>
+      <%= @map.locations.where(x_coord: { @user.x_pos }, y_coord: { @user.y_pos }).first.location_name %>
+      <br />
+      Move East
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <%= @map.locations.where(x_coord: { @user.x_pos }, y_coord: { @user.y_pos }).first.location_name %>
+      <br />
+      Move Southwest</td>
+    <td>
+      <%= @map.locations.where(x_coord: { @user.x_pos }, y_coord: { @user.y_pos }).first.location_name %>
+      <br />
+      Move South
+    </td>
+    <td>
+      <%= @map.locations.where(x_coord: { @user.x_pos }, y_coord: { @user.y_pos }).first.location_name %>
+      <br />
+      Move Southeast
+    </td>
+  </tr>
+</table>
+
+<p>The user is located at x = <%= @user.x_pos %>, y = <%= @user.y_pos %>.</p>
