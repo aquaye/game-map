@@ -2,54 +2,73 @@
 
 <table>
   <tr>
+    <% if @user.x_pos - 1 && @user.y_pos + 1 %>
     <td>
-      <%= @map.locations.where(x_coord: { @user.x_pos }, y_coord: { @user.y_pos }).first.location_name %>
+      <%= @map.locations.where(x_coord: @user.x_pos - 1, y_coord: @user.y_pos + 1).first.location_name %>
       <br />
       Move Northwest
     </td>
+    <% end %>
+    <% if @user.x_pos && @user.y_pos + 1 %>
     <td>
-      <%= @map.locations.where(x_coord: { @user.x_pos }, y_coord: { @user.y_pos }).first.location_name %>
+      <%= @map.locations.where(x_coord: @user.x_pos, y_coord: @user.y_pos + 1).first.location_name %>
       <br />
       Move North
     </td>
+    <% end %>
+    <% if @user.x_pos + 1 && @user.y_pos + 1 %>
     <td>
-      <%= @map.locations.where(x_coord: { @user.x_pos }, y_coord: { @user.y_pos }).first.location_name %>
+      <%= @map.locations.where(x_coord: @user.x_pos + 1, y_coord: @user.y_pos + 1).first.location_name %>
       <br />
       Move Northeast
     </td>
+    <% end %>
   </tr>
 
   <tr>
+    <% if @user.x_pos - 1 && @user.y_pos %>
     <td>
-      <%= @map.locations.where(x_coord: { @user.x_pos }, y_coord: { @user.y_pos }).first.location_name %>
+      <%= @map.locations.where(x_coord: @user.x_pos - 1, y_coord: @user.y_pos).first.location_name %>
       <br />
       Move West
     </td>
+    <% end %>
+    <% if @user.x_pos && @user.y_pos %>
     <td>
       Player at <%= @map.locations.where(x_coord: @user.x_pos, y_coord: @user.y_pos).first.location_name %>
     </td>
+    <% end %>
+    <% if @user.x_pos + 1 && @user.y_pos %>
     <td>
-      <%= @map.locations.where(x_coord: { @user.x_pos }, y_coord: { @user.y_pos }).first.location_name %>
+      <%= @map.locations.where(x_coord: @user.x_pos + 1, y_coord: @user.y_pos).first.location_name %>
       <br />
       Move East
     </td>
+    <% end %>
   </tr>
 
   <tr>
+    <% if @user.x_pos - 1 && @user.y_pos - 1 %>
     <td>
-      <%= @map.locations.where(x_coord: { @user.x_pos }, y_coord: { @user.y_pos }).first.location_name %>
+      <%= @map.locations.where(x_coord: @user.x_pos - 1, y_coord: @user.y_pos - 1).first.location_name %>
       <br />
-      Move Southwest</td>
+      Move Southwest
+    </td>
+    <% end %>
+    <% if @user.x_pos && @user.y_pos - 1 %>
     <td>
-      <%= @map.locations.where(x_coord: { @user.x_pos }, y_coord: { @user.y_pos }).first.location_name %>
+      <%= @map.locations.where(x_coord: @user.x_pos, y_coord: @user.y_pos - 1).first.location_name %>
       <br />
       Move South
     </td>
+    <% end %>
+    <% if @user.x_pos + 1 && @user.y_pos - 1 %>
     <td>
-      <%= @map.locations.where(x_coord: { @user.x_pos }, y_coord: { @user.y_pos }).first.location_name %>
+      <%= @map.locations.where(x_coord: @user.x_pos + 1, y_coord: @user.y_pos - 1).first.location_name %>
       <br />
       Move Southeast
     </td>
+    <% end %>
   </tr>
 </table>
 
