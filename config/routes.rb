@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   resources :maps
   resources :locations
+  post 'users/:id/move', to: 'users#move', as: 'users_move'
 end

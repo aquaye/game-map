@@ -2,74 +2,78 @@
 
 <table>
   <tr>
-    <% if @user.x_pos - 1 && @user.y_pos + 1 %>
-    <td>
-      <%= @map.locations.where(x_coord: @user.x_pos - 1, y_coord: @user.y_pos + 1).first.location_name %>
-      <br />
-      Move Northwest
-    </td>
+    <% if @game_map[:northwest] %>
+      <td>
+        <%= @game_map[:northwest].location_name %>
+        <br />
+        <%= link_to 'Move Northwest', users_move_path(current_user, x_pos: @game_map[:northwest].x_coord, y_pos: @game_map[:northwest].y_coord), method: :post %>
+      </td>
     <% end %>
-    <% if @user.x_pos && @user.y_pos + 1 %>
-    <td>
-      <%= @map.locations.where(x_coord: @user.x_pos, y_coord: @user.y_pos + 1).first.location_name %>
-      <br />
-      Move North
-    </td>
+    <% if @game_map[:north] %>
+      <td>
+        <%= @game_map[:north].location_name %>
+        <br />
+        <%= link_to 'Move North', users_move_path(current_user, x_pos: @game_map[:north].x_coord, y_pos: @game_map[:north].y_coord), method: :post %>
+      </td>
     <% end %>
-    <% if @user.x_pos + 1 && @user.y_pos + 1 %>
-    <td>
-      <%= @map.locations.where(x_coord: @user.x_pos + 1, y_coord: @user.y_pos + 1).first.location_name %>
-      <br />
-      Move Northeast
-    </td>
-    <% end %>
-  </tr>
-
-  <tr>
-    <% if @user.x_pos - 1 && @user.y_pos %>
-    <td>
-      <%= @map.locations.where(x_coord: @user.x_pos - 1, y_coord: @user.y_pos).first.location_name %>
-      <br />
-      Move West
-    </td>
-    <% end %>
-    <% if @user.x_pos && @user.y_pos %>
-    <td>
-      Player at <%= @map.locations.where(x_coord: @user.x_pos, y_coord: @user.y_pos).first.location_name %>
-    </td>
-    <% end %>
-    <% if @user.x_pos + 1 && @user.y_pos %>
-    <td>
-      <%= @map.locations.where(x_coord: @user.x_pos + 1, y_coord: @user.y_pos).first.location_name %>
-      <br />
-      Move East
-    </td>
+    <% if @game_map[:northeast] %>
+      <td>
+        <%= @game_map[:northeast].location_name %>
+        <br />
+        <%= link_to 'Move Northeast', users_move_path(current_user, x_pos: @game_map[:northeast].x_coord, y_pos: @game_map[:northeast].y_coord), method: :post %>
+      </td>
     <% end %>
   </tr>
 
   <tr>
-    <% if @user.x_pos - 1 && @user.y_pos - 1 %>
-    <td>
-      <%= @map.locations.where(x_coord: @user.x_pos - 1, y_coord: @user.y_pos - 1).first.location_name %>
-      <br />
-      Move Southwest
-    </td>
+    <% if @game_map[:west] %>
+      <td>
+        <%= @game_map[:west].location_name %>
+        <br />
+        <%= link_to 'Move West', users_move_path(current_user, x_pos: @game_map[:west].x_coord, y_pos: @game_map[:west].y_coord), method: :post %>
+      </td>
     <% end %>
-    <% if @user.x_pos && @user.y_pos - 1 %>
     <td>
-      <%= @map.locations.where(x_coord: @user.x_pos, y_coord: @user.y_pos - 1).first.location_name %>
-      <br />
-      Move South
+      Player at <%= @map.locations.where(x_coord: current_user.x_pos, y_coord: current_user.y_pos).first.location_name %>
     </td>
+    <% if @game_map[:east] %>
+      <td>
+        <%= @game_map[:east].location_name %>
+        <br />
+        <%= link_to 'Move East', users_move_path(current_user, x_pos: @game_map[:east].x_coord, y_pos: @game_map[:east].y_coord), method: :post %>
+      </td>
     <% end %>
-    <% if @user.x_pos + 1 && @user.y_pos - 1 %>
-    <td>
-      <%= @map.locations.where(x_coord: @user.x_pos + 1, y_coord: @user.y_pos - 1).first.location_name %>
-      <br />
-      Move Southeast
-    </td>
+  </tr>
+
+  <tr>
+    <% if @game_map[:southwest] %>
+      <td>
+        <%= @game_map[:southwest].location_name %>
+        <br />
+        <%= link_to 'Move Southwest', users_move_path(current_user, x_pos: @game_map[:southwest].x_coord, y_pos: @game_map[:southwest].y_coord), method: :post %>
+      </td>
+    <% end %>
+    <% if @game_map[:south] %>
+      <td>
+        <%= @game_map[:south].location_name %>
+        <br />
+        <%= link_to 'Move South', users_move_path(current_user, x_pos: @game_map[:south].x_coord, y_pos: @game_map[:south].y_coord), method: :post %>
+      </td>
+    <% end %>
+    <% if @game_map[:southeast] %>
+      <td>
+        <%= @game_map[:southeast].location_name %>
+        <br />
+        <%= link_to 'Move Southeast', users_move_path(current_user, x_pos: @game_map[:southeast].x_coord, y_pos: @game_map[:southeast].y_coord), method: :post %>
+      </td>
     <% end %>
   </tr>
 </table>
 
-<p>The user is located at x = <%= @user.x_pos %>, y = <%= @user.y_pos %>.</p>
+<!-- <p>The user is located at x = <%= current_user.x_pos %>, y = <%= current_user.y_pos %>.</p>
+
+<ul>
+  <%= @game_map.each do |location| %>
+    <li><%= location.inspect %></li>
+  <% end %>
+</ul> -->

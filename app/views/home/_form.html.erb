@@ -1,0 +1,5 @@
+<%= form_for :user do |field| %>
+  <%= field.hidden_field :game_map, :x_coord %>
+  <%= field.hidden_field :game_map, :y_coord %>
+  <%= field.submit 'Move' %>
+<% end %>
